@@ -1,10 +1,9 @@
 import logging
-import os
-import threading
 from sys import stderr
-import server
 
 from fastapi import FastAPI, Request
+
+import server
 
 # Configure logging
 logging.basicConfig(
@@ -21,10 +20,12 @@ log = logging.getLogger(__name__)
 
 app = FastAPI()
 
+
 @app.on_event("startup")
 async def startup_event():
     log.info("Startup event")
-    server.start_tcp_servers(None, False)
+    server.start_servers(None, False)
+
 
 @app.get("/{api:path}")
 async def root(api: str, request: Request):

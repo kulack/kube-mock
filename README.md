@@ -40,9 +40,14 @@ pip -m venv tools.venv
 . ./tools.venv/bin/activate
 pip install -r requirements.txt
 
+# Web application
+
 fastapi run --reload --host 0.0.0.0 --port 8181
 OR
 python -m uvicorn main:app --reload --host 0.0.0.0 --port 8181 --ssl-keyfile=dev-key.pem --ssl-certfile=dev-cert.pem
+
+# TCP/UDP application
+
 ```
 
 ## Verification
